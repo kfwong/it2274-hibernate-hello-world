@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory name="">
+		<!-- Standard JDBC configuration parameters -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/it2274_hibernate_example</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
+		
+		<!-- 
+		Hibernate connection pooling module. 
+		This is to optimize the performance on handling concurrent connections.
+		A closed connection simply put into the pool for later use, rather than reopen a new connection again.
+		-->  
+		<property name="hibernate.connection.pool_size">10</property>
+		
+		<!-- Generate SQL statement to console for each CRUD operation-->
+		<property name="show_sql">true</property>
+		
+		<!--
+		The classname of a Hibernate org.hibernate.dialect.Dialect which allows Hibernate to generate SQL optimized for a particular relational database. 
+		Please refer to Hibernate Documentation for different database value.
+		-->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<!-- 
+		Contextual session
+		Please refer to Hibernate Documentation for description
+		-->
+		<property name="hibernate.current_session_context_class">thread</property>
+		
+		<!--
+		Tell Hibernate to attempt to update a schema if one already exist.
+		If not, create a new schema.
+		Please refer to Hibernate Documentation for possible values.
+		-->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- List of declaration of mapped classes-->
+		<mapping class="com.it2274.hibernate.example.dto.Student" />
+
+	</session-factory>
+</hibernate-configuration>
